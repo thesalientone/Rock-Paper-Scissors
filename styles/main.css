@@ -1,1 +1,38 @@
-.top
+.top-bar {
+  background-color: aqua;
+  top: 0px;
+  height: 15%;
+}
+.container {
+  height: 75%;
+  position: relative;
+  top: 15%;
+}
+
+.bottom-bar {
+  background-color: lime;
+  height: 10%;
+  bottom: 0px;
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  background-color: purple;
+  position: absolute;
+}
+
+div {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+
+}
+
+.bar {
+  position: absolute;
+  width: 100%;
+}
