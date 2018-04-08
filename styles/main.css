@@ -1,17 +1,18 @@
 .top-bar {
   background-color: aqua;
   top: 0px;
-  height: 15%;
+  height: 10%;
 }
 .container {
-  height: 75%;
+  height: 85%;
+  width: 100%;
   position: relative;
-  top: 15%;
+  top: 10%;
 }
 
 .bottom-bar {
   background-color: lime;
-  height: 10%;
+  height: 5%;
   bottom: 0px;
 }
 
@@ -21,18 +22,89 @@
   border: 0px;
   margin: 0px;
   padding: 0px;
-  background-color: purple;
+  /*background-color: purple;*/
   position: absolute;
 }
 
 div {
-  border: 0px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
   margin: 0px;
   padding: 0px;
+
 
 }
 
 .bar {
   position: absolute;
   width: 100%;
+}
+
+.bottom-left{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+}
+.bottom-right{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+}
+.bottom-center{
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  height: 100%;
+}
+.score-output{
+  height: 33%;
+  top: 0px;
+}
+.choice-buttons{
+  height: 14%;
+  position: relative;
+  top: 0px;
+}
+.result-images{
+  height: 20%;
+  position: relative;
+  top: 0px;
+}
+.readouts{
+  height: 33%;
+  position: relative;
+  top: 0px;
+}
+.left{
+  width: 50%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.right{
+  width: 50%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.rock-button{
+  width: 33%;
+  left: 0%;
+}
+.paper-button{
+  width: 34%;
+  left: 33%;
+}
+.scissors-button{
+  width: 33%;
+  right: 0%;
+}
+
+.button {
+  top: 0px;
+  position: absolute;
 }
