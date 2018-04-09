@@ -1,14 +1,7 @@
-function computerPlay() {
+function computerPlay(playerMove) {
 
-  introtext = "Rock, Paper, Scissors. Type your selected move below."
-  console.log(introtext)
-  player = prompt("Enter Move: ")
-  while( !XOR(XOR(player.toUpperCase().includes("ROCK"), player.toUpperCase().includes("PAPER")), player.toUpperCase().includes("SCISSORS"))) {
-    console.log("Error : Text did not contain a proper entry. Please enter 'rock', 'paper', or 'scissors'")
-    player = prompt("Enter Move: ")
-  }
-  player = player.toUpperCase()
 
+  player = playerMove
   console.log("You chose " + player)
   var rps = ['ROCK', 'PAPER', 'SCISSORS'];
 
@@ -37,6 +30,9 @@ function scoreGame (a , b) {
 
 }
 
+
+
+
 function XOR(a, b) {
 
   if ((a && b) || !(a || b )) {
@@ -45,4 +41,30 @@ function XOR(a, b) {
     return true
   }
 
+}
+
+
+function rockClick() {
+  computerPlay("ROCK")
+}
+
+function paperClick() {
+  computerPlay("PAPER")
+}
+
+function scissorsClick() {
+  computerPlay("SCISSORS")
+}
+
+var rockButton = document.getElementById('rockButton')
+var paperButton = document.getElementById('paperButton')
+var scissorsButton = document.getElementById('scissorsButton')
+rockButton.onclick = function() {
+  rockClick()
+}
+paperButton.onclick = function() {
+  paperClick()
+}
+scissorsButton.onclick = function() {
+  scissorsClick()
 }

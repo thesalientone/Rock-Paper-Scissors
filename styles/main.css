@@ -145,6 +145,8 @@ div {
 }
 p {
   text-align: center;
+  display: block;
+  top: 50%;
 }
 
 img {
