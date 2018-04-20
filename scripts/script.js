@@ -24,9 +24,12 @@ function computerPlay(playerMove) {
   document.getElementById('comp-image').setAttribute("src", computerText)
   //console.log("The computer chose: " + computer)
   result = scoreGame(player,computer)
-  readoutString = "Game: " + (playerScore + computerScore) + " Player chose: " + player + " Computer chose: " + computer + " " + result 
+  readoutString = "Game: " + (playerScore + computerScore) + " Player chose: " + player + " Computer chose: " + computer + " " + result
+  var node = document.createElement("P")
+  var textnode = document.createTextNode(readoutString)
+  node.appendChild(textnode)
   console.log(readoutString)
-  readoutText.appendChild('<p>' + readoutString + '</p>')
+  readoutText.appendChild(node)
 
 
 }

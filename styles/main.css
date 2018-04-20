@@ -160,6 +160,11 @@ div {
 
 .readouts-left {
   background-color: #AA8239;
+  overflow: auto;
+}
+
+.readouts-left p {
+  text-align: left;
 }
 
 .readouts-right {
