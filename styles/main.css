@@ -143,6 +143,29 @@ div {
 .player-score{
   height: 100%;
 }
+
+.history{
+  background-color: #fff000
+}
+.statistics {
+  background-color: #00ffff
+}
+.lower-text {
+  height: 20%;
+}
+.content {
+
+  height: 80%
+}
+
+.readouts-left {
+  background-color: #AA8239;
+}
+
+.readouts-right {
+  background-color: #7F2A68;
+}
+
 p {
   text-align: center;
   display: block;
