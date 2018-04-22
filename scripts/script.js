@@ -8,6 +8,8 @@ var winHistory = []
 var playerWinPercentage = []
 var playerWins
 var computerWins
+var playerWPCA = []
+
 
 
 
@@ -37,8 +39,10 @@ function computerPlay(playerMove) {
   var textnode = document.createTextNode(readoutString)
   node.appendChild(textnode)
   //console.log(readoutString)
-  console.log(playerWinPercentage)
+  //console.log(playerWinPercentage)
   readoutText.appendChild(node)
+
+  updateChartArrays()
 
 
 }
@@ -125,3 +129,41 @@ paperButton.onclick = function() {
 scissorsButton.onclick = function() {
   scissorsClick()
 }
+
+function updateChartArrays() {
+  //Converts each of the individual chart arrays into a format accepted by chart.js
+
+  playerWPCA.push({x: playerWinPercentage.length, y: playerWinPercentage[playerWinPercentage.length -1]})
+  chart.update()
+}
+
+//Code for displaying charts
+
+var ctx = document.getElementById('gameChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'scatter',
+
+    // The data for our dataset
+    data: {
+
+        datasets: [{
+            label: "Win Percentage",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: playerWPCA
+
+        }]
+      },
+
+    // Configuration options go here
+    options: {
+      scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom'
+            }]
+        }
+
+    }
+});
