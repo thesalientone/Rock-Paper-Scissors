@@ -155,12 +155,16 @@ div {
 }
 .content {
 
-  height: 80%
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  overflow: auto;
+  background-color:
 }
 
 .readouts-left {
   background-color: #AA8239;
-  overflow: auto;
+
 }
 
 .readouts-left p {

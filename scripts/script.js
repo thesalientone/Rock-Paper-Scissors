@@ -2,6 +2,13 @@ var playerScore = 0;
 var computerScore = 0;
 var result = ""
 var readoutString = ""
+var playerMoves = []
+var computerMoves = []
+var winHistory = []
+var playerWinPercentage = []
+var playerWins
+var computerWins
+
 
 
 var playerScoreText = document.getElementsByClassName('player-score')[0].children[0]
@@ -24,28 +31,38 @@ function computerPlay(playerMove) {
   document.getElementById('comp-image').setAttribute("src", computerText)
   //console.log("The computer chose: " + computer)
   result = scoreGame(player,computer)
+  playerWinPercentage.push(getPlayerWinPercentage(winHistory))
   readoutString = "Game: " + (playerScore + computerScore) + " Player chose: " + player + " Computer chose: " + computer + " " + result
   var node = document.createElement("P")
   var textnode = document.createTextNode(readoutString)
   node.appendChild(textnode)
-  console.log(readoutString)
+  //console.log(readoutString)
+  console.log(playerWinPercentage)
   readoutText.appendChild(node)
 
 
 }
 
 function scoreGame (a , b) {
+  //a is player, b is computer
+  //Updates Statistics
+  playerMoves.push(a)
+  computerMoves.push(b)
+
   //Calculates the winner of the game using modular arithmetic
   var RPSHash = {"ROCK":-1, "PAPER":0, "SCISSORS":1}
   A = RPSHash[a]
   B = RPSHash[b]
   if ((A - B) == 0) {
+    winHistory.push(0)
     return "Draw. Well Played."
   } else if ((A - B + 3) % 3 == 1) {
+    winHistory.push(1)
     playerScore = playerScore + 1
     playerScoreText.innerHTML = "Player : " + playerScore
     return (a + " beats " + b + ". Player wins.")
   } else {
+    winHistory.push(-1)
     computerScore = computerScore + 1
     compScoreText.innerHTML = "Computer : " + computerScore
     return (b + " beats " + a + ". Computer wins.")
@@ -66,6 +83,15 @@ function XOR(a, b) {
 
 }
 
+function getSum(total, num) {
+    return total + num
+}
+
+function getPlayerWinPercentage(scoreArray) {
+    playerWins = scoreArray.filter(num => num > 0).length
+    return (playerWins / scoreArray.length ) * 100
+
+}
 
 function rockClick() {
 
