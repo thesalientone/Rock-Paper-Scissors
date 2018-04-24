@@ -48,7 +48,7 @@ function computerPlay(playerMove) {
   updateChartArrays()
 
   //stats development will remove later
-  console.log(gameArray(2,2,0))
+  console.log(gameArray(1,1,0))
 
 }
 
@@ -237,11 +237,15 @@ function gameArray(agent, condition, move) {
     switch(move) {
       case 0:
             return createChartArray(chartHistoryArray);
+            break;
       case 1:
+            return createChartArray(condenseHistoryArray(chartHistoryArray, "ROCK"))
             break;
       case 2:
+            return createChartArray(condenseHistoryArray(chartHistoryArray, "PAPER"))
             break;
       case 3:
+            return createChartArray(condenseHistoryArray(chartHistoryArray, "SCISSORS"))
             break;
 
 
@@ -250,4 +254,23 @@ function gameArray(agent, condition, move) {
 
 
 
+}
+
+function count(array, item) {
+  if (typeof(array) == "string") {
+      array = array.split("");
+  }
+  return array.filter(x => x == item).length
+
+}
+var historyArray = []
+function condenseHistoryArray(array, move) {
+    historyArray = []
+    array.forEach(function(value, index) {
+      if (basisArray[index] == move) {
+        historyArray.push(value)
+      }
+    })
+  console.log("History array size: " + historyArray.length)
+  return historyArray
 }
