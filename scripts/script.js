@@ -192,7 +192,7 @@ var calcWins = []
 var calcWinsFiltered = []
 var winCalc
 function createChartArray(inputScoreArray) {
-
+    chartOutputArray = []
     inputScoreArray.forEach(collapsePercentage)
     return chartOutputArray
 }
