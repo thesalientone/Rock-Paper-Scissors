@@ -193,8 +193,28 @@ var calcWinsFiltered = []
 var winCalc
 function createChartArray(inputScoreArray) {
     chartOutputArray = []
+
     inputScoreArray.forEach(collapsePercentage)
+    if (inputScoreArray.length > playerMoves.length) {
+
+
+      inputScoreArray = condenseArray(chartOutputArray, 2)
+    }
     return chartOutputArray
+}
+
+function condenseArray(array, n) {
+  //condenses an array by returning every nth element in a new array
+
+  var tempArray = []
+
+  array.forEach(function(value, index) {
+      if (index % n == (n -1 )) {
+        tempArray.push(value)
+      }
+  })
+
+  return tempArray
 }
 
 function collapsePercentage(element, index, array) {
@@ -231,7 +251,12 @@ function gameArray(agent, condition, move) {
         chartHistoryArray = winHistory
       }
     } else {
-      //basisArray = Need to think about how to encode overall array
+      basisArray = []
+      playerMoves.forEach(function(value, index) {
+        basisArray.push(playerMoves[index])
+        basisArray.push(computerMoves[index])
+      })
+
     }
 
     switch(move) {
@@ -239,13 +264,13 @@ function gameArray(agent, condition, move) {
             return createChartArray(chartHistoryArray);
             break;
       case 1:
-            return createChartArray(condenseHistoryArray(chartHistoryArray, "ROCK"))
+            return createChartArray(condenseHistoryArray(chartHistoryArray, "ROCK", condition, agent))
             break;
       case 2:
-            return createChartArray(condenseHistoryArray(chartHistoryArray, "PAPER"))
+            return createChartArray(condenseHistoryArray(chartHistoryArray, "PAPER", condition, agent))
             break;
       case 3:
-            return createChartArray(condenseHistoryArray(chartHistoryArray, "SCISSORS"))
+            return createChartArray(condenseHistoryArray(chartHistoryArray, "SCISSORS", condition, agent))
             break;
 
 
@@ -264,13 +289,29 @@ function count(array, item) {
 
 }
 var historyArray = []
-function condenseHistoryArray(array, move) {
+var tempArray = []
+function condenseHistoryArray(array, move, condition, agent) {
     historyArray = []
-    array.forEach(function(value, index) {
-      if (basisArray[index] == move) {
-        historyArray.push(value)
-      }
-    })
-  console.log("History array size: " + historyArray.length)
+    tempArray = []
+    if (condition != 3) {
+      array.forEach(function(value, index) {
+        if (basisArray[index] == move) {
+          historyArray.push(value)
+        }  
+      })
+    } else {
+
+      basisArray.forEach(function(value, index) {
+        if( basisArray[index] == move) {
+          historyArray.push(1)
+        } else {
+          historyArray.push(0)
+        }
+      })
+
+    }
+
+
+
   return historyArray
 }
